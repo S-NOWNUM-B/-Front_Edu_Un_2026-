@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from './Card';
+import ProductList from './ProductList';
 
 function App() {
     return (
@@ -11,6 +12,8 @@ function App() {
             <Card title="Второе задание" className='card-secondary'>
                 <p>Вторая карточка для проверки работы функционала</p>
             </Card>
+
+            <ProductList />
         </>
     );
 }
