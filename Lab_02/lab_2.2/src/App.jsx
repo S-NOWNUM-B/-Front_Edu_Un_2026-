@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from './Card';
 import ProductList from './ProductList';
+import Section from "./Section.jsx";
 
 function App() {
     return (
@@ -14,6 +15,10 @@ function App() {
             </Card>
 
             <ProductList />
+
+            <Section title='Products'>
+                <ProductList />
+            </Section>
         </>
     );
 }
