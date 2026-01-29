@@ -33,22 +33,6 @@ git clone <repository-url>
 cd Frontend_Education
 ```
 
-### Установка зависимостей для лабораторной работы
-
-```bash
-# Установить все зависимости для всех проектов
-pnpm install
-
-# Запустить dev-сервер для лабораторной *.*
-pnpm dev:*.*
-
-# Собрать все проекты
-pnpm build:all
-
-# Очистка node_moduls
-pnpm clean
-```
-
 ---
 
 ## Системные требования
