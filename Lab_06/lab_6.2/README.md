@@ -1,75 +1,49 @@
-# React + TypeScript + Vite
+# Lab 6.2: React Router - Dynamic Routes and Data Loading
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Обзор
+Данная лабораторная работа расширяет концепции из Lab 6.1 и фокусируется на динамической маршрутизации и загрузке данных. Реализовано приложение со списком курсов и детальными страницами курсов с использованием параметров маршрута и loader функций.
 
-Currently, two official plugins are available:
+## Цель работы
+Научиться работать с динамическими маршрутами в React Router, использовать параметры URL, применять loader функции для предзагрузки данных, обрабатывать ошибки при загрузке данных.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Структура проекта в src:
+*   `main.tsx` — Точка входа приложения. Настройка роутера с динамическими маршрутами и loader функциями.
+*   `App.tsx` — Главная страница со списком всех доступных курсов.
+*   `CourseDetail.tsx` — Страница детальной информации о курсе. Получает данные через `useLoaderData`.
+*   `Course.tsx` — Альтернативный компонент для отображения информации о курсе.
+*   `NotFound.tsx` — Страница 404 для несуществующих маршрутов или курсов.
+*   `data.tsx` — Файл с данными курсов и функцией получения курса по ID.
 
-## React Compiler
+## Реализованный функционал
+1.  **Dynamic Routes:** Использование параметров в маршрутах (`/course/:id`) для динамического отображения контента.
+2.  **Route Parameters:** Работа с `useParams` хуком для получения параметров из URL.
+3.  **Data Loaders:** Использование `loader` функций для предзагрузки данных перед рендерингом компонента.
+4.  **useLoaderData Hook:** Получение предзагруженных данных в компоненте через `useLoaderData`.
+5.  **Error Handling:** Обработка случаев, когда курс не найден, через `throw Response` в loader.
+6.  **Navigation with State:** Создание списка курсов с навигацией на детальные страницы.
+7.  **TypeScript Integration:** Типизация loader данных и компонентов с использованием интерфейсов.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Исправленные ошибки
+В процессе разработки были исправлены следующие ошибки:
+*   Исправлен импорт типа `Course` на `import type` для соответствия `verbatimModuleSyntax`
+*   Удалено несуществующее поле `instructor` из интерфейса и компонента
+*   Переработана структура маршрутов - добавлена главная страница со списком курсов
+*   Исправлен loader - убран лишний `await` и добавлено преобразование `params.id` в число
 
-Note: This will impact Vite dev & build performances.
+## Ключевые концепции
+*   **Dynamic Routing** - маршруты с параметрами для отображения динамического контента
+*   **Data Loaders** - предзагрузка данных до рендеринга компонента
+*   **useParams** - хук для получения параметров маршрута
+*   **useLoaderData** - хук для получения данных, загруженных через loader
+*   **Error Response** - обработка ошибок через throw Response для активации errorElement
 
-## Expanding the ESLint configuration
+## Методология
+Приложение демонстрирует паттерн "список-детали" с использованием динамической маршрутизации. Главная страница показывает список всех курсов, при клике на курс пользователь переходит на детальную страницу, где данные предзагружаются через loader функцию.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+**Инструкция по запуску:**
+1. Установите зависимости: `pnpm install`
+2. Запустите проект: `pnpm dev`
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+*Исполнитель: Мамаев Станислав*
+*Дата: 21.02.2026*
