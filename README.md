@@ -48,11 +48,3 @@ cd Frontend_Education
 | **Диск**    | 200 MB        | 1 GB+           | Исходники + зависимости    |
 
 </div>
-
----
-
-<div align="center">
-
-**[⬆ Вернуться наверх](#frontend-education)**
-
-</div>
