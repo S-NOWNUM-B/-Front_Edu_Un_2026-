@@ -6,11 +6,13 @@ import { StatusBar } from 'expo-status-bar';
 
 import { ProductListScreen } from './src/screens/ProductListScreen';
 import { ProductDetailScreen } from './src/screens/ProductDetailScreen';
+import { ComponentsShowcaseScreen } from './src/screens/ComponentsShowcaseScreen';
 import { Product } from './src/data/products';
 
 type RootStackParamList = {
   ProductList: undefined;
   ProductDetail: { product: Product };
+  ComponentsShowcase: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -37,6 +39,11 @@ export default function App() {
             name="ProductDetail" 
             component={ProductDetailScreen} 
             options={({ route }) => ({ title: route.params.product.name })} 
+          />
+          <Stack.Screen
+            name="ComponentsShowcase"
+            component={ComponentsShowcaseScreen}
+            options={{ title: 'Components Demo' }}
           />
         </Stack.Navigator>
       </NavigationContainer>
