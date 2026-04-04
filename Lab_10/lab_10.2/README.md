@@ -1,75 +1,43 @@
-# React + TypeScript + Vite
+# Lab 10.2: React Testing — компонент TodoList (расширенная версия)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Обзор
+Расширенная версия лабораторной с аналогичным компонентом TodoList и тестами, дополненная CI/CD конфигурацией (GitHub Actions, Vercel).
 
-Currently, two official plugins are available:
+## Цель работы
+Закрепить навыки тестирования React-компонентов и настроить автоматический запуск тестов в CI/CD пайплайне.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Структура проекта
+- `src/App.tsx` - корневой компонент приложения.
+- `src/components/TodoList.tsx` - компонент списка задач с CRUD-операциями.
+- `src/components/TodoList.test.tsx` - набор тестов для TodoList.
+- `.github/` - конфигурация GitHub Actions для CI.
+- `vercel.json` - настройка деплоя на Vercel.
+- `jest.config.js` - конфигурация Jest.
+- `jest.setup.ts` - настройка Testing Library.
+- `tsconfig.test.json` - конфигурация TypeScript для тестов.
 
-## React Compiler
+## Реализованный функционал
+1. **Компонент TodoList:** добавление, переключение, удаление задач.
+2. **Тесты рендеринга:** проверка пустого списка и списка с начальными данными.
+3. **Тесты добавления:** через кнопку и клавишу Enter, проверка на пустой ввод.
+4. **Тесты toggle:** переключение статуса completed.
+5. **Тесты удаления:** удаление задачи и проверка отсутствия в DOM.
+6. **Тесты счётчика:** обновление количества задач.
+7. **CI/CD:** автоматический запуск тестов через GitHub Actions.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Ключевые концепции
+- **Testing Library** — рендеринг и поиск элементов через `getBy*`, `query*`.
+- **User Event** — реалистичная эмуляция действий пользователя (`userEvent.setup()`).
+- **data-testid** — стабильные селекторы для тестов.
+- **CI/CD** — автоматизация тестирования в пайплайне.
 
-Note: This will impact Vite dev & build performances.
+## Методология
+Аналогичный подход к организации тестов с добавлением CI/CD для автоматизации. GitHub Actions запускает тесты при каждом push и pull request.
 
-## Expanding the ESLint configuration
+**Инструкция по запуску:**
+1. Установите зависимости: `pnpm install`
+2. Запустите тесты: `pnpm test`
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+*Исполнитель: Мамаев Станислав*
+*Дата: 04.04.2026*

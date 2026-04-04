@@ -6,6 +6,9 @@ export default {
     '\\.(css|less|scss|sass)$': 'identity-obj-proxy'
   },
   transform: {
-    '^.+\\.tsx?$': ['ts-jest', { useESM: true }]
+    '^.+\\.tsx?$': ['ts-jest', {
+      useESM: true,
+      tsconfig: '<rootDir>/tsconfig.test.json'
+    }]
   }
 };
